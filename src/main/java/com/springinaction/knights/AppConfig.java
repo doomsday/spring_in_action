@@ -16,19 +16,18 @@ public class AppConfig {
 
   @Bean
   public SpringJdbcBean springJdbcBean() {
-    return new SpringJdbcBean(new JdbcTemplate());
+    return new SpringJdbcBean(getJdbcTemplate());
   }
 
   @Bean
-  public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-    JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    jdbcTemplate.setDataSource(dataSource);
-    return jdbcTemplate;
+  public JdbcTemplate getJdbcTemplate() {
+    return new JdbcTemplate(dataSource());
   }
 
   @Bean
   public DataSource dataSource() {
     return new EmbeddedDatabaseBuilder()
+        .setName("computer")
         .setType(EmbeddedDatabaseType.HSQL)
         .addScript("classpath:computer.sql")
         .build();
