@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by drpsy on 23-Oct-17 (21:58).
  */
-@Component  // Serves as a clue to Spring that a bean should be created for the class.
+@Component  // Default ID is 'sgtPeppers'
 public class SgtPeppers implements CompactDisc {
   private String title = "Stg. Pepper's Lonely Hearts Club Band";
   private String artist = "The Beatles";
