@@ -1,9 +1,10 @@
 package com.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import com.habuna.restfun.MagicBean;
 import com.springinaction.configuration.AppConfig;
+import com.springinaction.hellsystem.Dessert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AppTest {
 
   @Autowired
-  private MagicBean magicBean;
+  private Dessert dessert;
 
   @Test
-  public void computerShallNotBeNull() {
-    assertNotNull(magicBean);
+  public void dessertShallNotCookies() {
+    assertEquals(dessert.run(), "Cookies");
   }
+
 }
