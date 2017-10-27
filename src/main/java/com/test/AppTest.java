@@ -3,9 +3,9 @@ package com.test;
 import static org.junit.Assert.assertEquals;
 
 import com.springinaction.configuration.AppConfig;
-import com.springinaction.hellsystem.Dessert;
-import com.springinaction.hellsystem.qualifiers.Cold;
-import com.springinaction.hellsystem.qualifiers.Creamy;
+import com.springinaction.hellsystem.NumberGenerator;
+import com.springinaction.hellsystem.qualifiers.Digits;
+import com.springinaction.hellsystem.qualifiers.NumberOfDigits;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = {AppConfig.class})
 @ActiveProfiles("dev")
 public class AppTest {
-  
-  @Cold
-  @Creamy
+
   @Autowired
-  private Dessert dessert;
+  @NumberOfDigits(value = Digits.THIRTEEN, odd = false)
+  private NumberGenerator evenNumberGenerator;
+
+  @Autowired
+  @NumberOfDigits(value = Digits.THIRTEEN, odd = true)
+  private NumberGenerator oddNumberGenerator;
 
   @Test
-  public void dessertShallNotCookies() {
-    assertEquals(dessert.run(), "IceCream");
+  public void numberGeneratorShallBeIsbnEvenGenerator() {
+    assertEquals(evenNumberGenerator.generate(), "IsbnEvenGenerator");
+  }
+
+  @Test
+  public void numberGeneratorShallBeIsbnOddGenerator() {
+    assertEquals(oddNumberGenerator.generate(), "IsbnOddGenerator");
   }
 
 }

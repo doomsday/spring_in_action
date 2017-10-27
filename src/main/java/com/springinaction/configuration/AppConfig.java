@@ -1,6 +1,6 @@
 package com.springinaction.configuration;
 
-import com.springinaction.hellsystem.Dessert;
+import com.springinaction.hellsystem.NumberGenerator;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
  */
 @Configuration
 @Profile("dev")
-@ComponentScan(basePackageClasses = {Dessert.class})
+@ComponentScan(basePackageClasses = {NumberGenerator.class})
 public class AppConfig {
 }
 

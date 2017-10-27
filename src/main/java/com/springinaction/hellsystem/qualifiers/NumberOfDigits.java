@@ -7,12 +7,13 @@ import java.lang.annotation.Target;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
- * Created by drpsy on 28-Oct-17 (00:29).
+ * Created by drpsy on 28-Oct-17 (00:44).
  */
 
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD, ElementType.TYPE})
-public @interface Cold {
-
+@Target({ElementType.FIELD, ElementType.TYPE, ElementType.METHOD})
+public @interface NumberOfDigits {
+  Digits value();
+  boolean odd();
 }
