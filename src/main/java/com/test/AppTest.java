@@ -4,10 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import com.springinaction.configuration.AppConfig;
 import com.springinaction.hellsystem.Dessert;
+import com.springinaction.hellsystem.qualifiers.Cold;
+import com.springinaction.hellsystem.qualifiers.Creamy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,14 +20,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = {AppConfig.class})
 @ActiveProfiles("dev")
 public class AppTest {
-
+  
+  @Cold
+  @Creamy
   @Autowired
-  @Qualifier("cake")  // Note that @Primary @Component is Cookies, not Cake.
   private Dessert dessert;
 
   @Test
   public void dessertShallNotCookies() {
-    assertEquals(dessert.run(), "Cake");
+    assertEquals(dessert.run(), "IceCream");
   }
 
 }
