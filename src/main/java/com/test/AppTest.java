@@ -1,12 +1,9 @@
 package com.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.springinaction.configuration.AppConfig;
 import com.springinaction.soundsystem.BlankDisc;
-import com.springinaction.soundsystem.Connection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +24,6 @@ public class AppTest {
   private BlankDisc blankDisc;
 
   @Autowired
-  private Connection connection;
-
-  @Autowired
   Environment environment;
 
   @Test
@@ -39,31 +33,4 @@ public class AppTest {
     assertTrue(blankDisc.getArtist()
         .equals("The Beatles"));
   }
-
-  @Test
-  public void connectionShallGetDefaultIntegerFromEnvironment() {
-    assertTrue(connection.getConnectionCount().equals(30));
-  }
-
-  @Test
-  public void envShallContainProperty() {
-    assertTrue(environment.containsProperty("prop.shall.exist"));
-  }
-
-  @Test
-  public void activeProfileShallBeDev() {
-    assertTrue(environment.getActiveProfiles()[0].equals("dev"));
-  }
-
-  @Test
-  public void defaultProfileShallBeDefault() {
-    assertTrue(environment.getDefaultProfiles()[0].equals("default"));
-  }
-
-  @Test
-  public void environmentShallAcceptDevProfileOnly() {
-    assertTrue(environment.acceptsProfiles("dev"));
-    assertFalse(environment.acceptsProfiles("default"));
-  }
-
 }
