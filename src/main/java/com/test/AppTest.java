@@ -1,13 +1,13 @@
 package com.test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import com.springinaction.configuration.AppConfig;
-import com.springinaction.soundsystem.BlankDisc;
+import com.springinaction.soundsystem.DataCollector;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,16 +21,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AppTest {
 
   @Autowired
-  private BlankDisc blankDisc;
-
-  @Autowired
-  Environment environment;
+  private DataCollector dataCollector;
 
   @Test
-  public void blankDiscShallBaseOnEnvironment() {
-    assertTrue(blankDisc.getTitle()
-        .equals("Sgt. Peppers Lonely Hearts Club Band"));
-    assertTrue(blankDisc.getArtist()
-        .equals("The Beatles"));
+  public void dataCollectorShallHasTime() {
+    assertNotNull(dataCollector.getTime());
+  }
+
+  @Test
+  public void dataCollectorShallHasArtist() {
+    assertTrue(dataCollector.getArtist().equals("The Beatles"));
+  }
+
+  @Test
+  public void vendorShallBeOracle() {
+    assertTrue(dataCollector.getVendor().equals("Oracle Corporation"));
   }
 }
