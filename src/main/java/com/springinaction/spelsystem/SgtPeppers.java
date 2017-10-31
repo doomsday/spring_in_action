@@ -1,4 +1,4 @@
-package com.springinaction.soundsystem;
+package com.springinaction.spelsystem;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,4 @@ public class SgtPeppers {
     return artist;
   }
 
-  public void setArtist(String artist) {
-    this.artist = artist;
-  }
 }

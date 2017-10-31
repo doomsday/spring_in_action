@@ -1,4 +1,4 @@
-package com.springinaction.soundsystem;
+package com.springinaction.spelsystem;
 
 /**
  * Wiring beans.
